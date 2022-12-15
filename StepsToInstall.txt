@@ -10,7 +10,7 @@ oh-my-posh prompt init pwsh --config https://raw.githubusercontent.com/Jan... --
 
 https://ohmyposh.dev/docs/themes
 
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
 
 Install Caskaydiacove Nerd Font 
 https://www.nerdfonts.com/font-downloads
