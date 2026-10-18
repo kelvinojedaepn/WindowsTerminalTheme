@@ -1,0 +1,308 @@
+:: Consultar la edición de Windows
+DISM /Online /Get-CurrentEdition
+
+:: Instalar la clave KMS correspondiente
+slmgr /ipk XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+
+:: Configurar el KMS autorizado
+slmgr /skms SERVIDOR_KMS_AUTORIZADO:1688
+
+:: Activar Windows
+slmgr /ato
+
+:: Verificar activación
+slmgr /xpr
+
+
+slmgr /ipk M7XTQ-FN8P6-TTKYV-9D4CC-J462D
+
+
+
+
+# Windows 10 — Guía de activación y claves KMS
+
+Documentación de las principales ediciones de Windows 10, claves genéricas KMS (GVLK), comandos de instalación, activación y diagnóstico.
+
+> **Importante:** Las claves GVLK son públicas y oficiales de Microsoft, pero no son licencias gratuitas. Para activar Windows mediante KMS se requiere una licencia por volumen válida y acceso a un servidor KMS autorizado.
+
+## 1. Identificar la edición de Windows 10
+
+Ejecutar CMD o PowerShell como administrador:
+
+```cmd
+winver
+DISM /Online /Get-CurrentEdition
+DISM /Online /Get-TargetEditions
+slmgr /dli
+slmgr /dlv
+slmgr /xpr
+```
+
+## 2. Windows 10 Pro
+
+| Edición | Clave KMS (GVLK) |
+|---|---|
+| Windows 10 Pro | W269N-WFGWX-YVC9B-4J6C9-T83GX |
+| Windows 10 Pro N | MH37W-N47XK-V7XM9-C7227-GCQG9 |
+| Windows 10 Pro for Workstations | NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J |
+| Windows 10 Pro for Workstations N | 9FNHH-K3HBT-3W4TD-6383H-6XYWF |
+| Windows 10 Pro Education | 6TP4R-GNPTD-KYYHQ-7B7DP-J447Y |
+| Windows 10 Pro Education N | YVWGF-BXNMC-HTQYQ-CPQ99-66QFC |
+
+## 3. Windows 10 Education
+
+| Edición | Clave KMS (GVLK) |
+|---|---|
+| Windows 10 Education | NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 |
+| Windows 10 Education N | 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ |
+
+## 4. Windows 10 Enterprise
+
+| Edición | Clave KMS (GVLK) |
+|---|---|
+| Windows 10 Enterprise | NPPR9-FWDCX-D2C8J-H872K-2YT43 |
+| Windows 10 Enterprise N | DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 |
+| Windows 10 Enterprise G | YYVX9-NTFWV-6MDM3-9PT4T-4M68B |
+| Windows 10 Enterprise G N | 44RPN-FTY23-9VTTB-MP9BX-T84FV |
+
+## 5. Windows 10 Enterprise LTSC
+
+| Edición | Clave KMS (GVLK) |
+|---|---|
+| Windows 10 Enterprise LTSC 2021 | M7XTQ-FN8P6-TTKYV-9D4CC-J462D |
+| Windows 10 Enterprise LTSC 2019 | M7XTQ-FN8P6-TTKYV-9D4CC-J462D |
+| Windows 10 Enterprise N LTSC 2021 | 92NFX-8DJQP-P6BBQ-THF9C-7CG2H |
+| Windows 10 Enterprise N LTSC 2019 | 92NFX-8DJQP-P6BBQ-THF9C-7CG2H |
+
+## 6. Windows 10 Enterprise LTSB
+
+| Edición | Clave KMS (GVLK) |
+|---|---|
+| Windows 10 Enterprise LTSB 2016 | DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ |
+| Windows 10 Enterprise N LTSB 2016 | QFFDN-GRT3P-VKWWX-X7T3R-8B639 |
+| Windows 10 Enterprise LTSB 2015 | WNMTR-4C88C-JK8YV-HQ7T2-76DF9 |
+| Windows 10 Enterprise N LTSB 2015 | 2F77B-TNFGY-69QQF-B8YKP-D69TJ |
+
+## 7. Windows 10 IoT Enterprise
+
+| Edición | Clave KMS (GVLK) |
+|---|---|
+| Windows 10 IoT Enterprise LTSC 2021 | KBN8V-HFGQ4-MGXVD-347P6-PDQGT |
+
+> La compatibilidad y los requisitos de activación de IoT Enterprise dependen de la edición y del contrato de licenciamiento.
+
+## 8. Windows 10 Home
+
+Estas ediciones no tienen una clave GVLK para activación KMS estándar.
+
+| Edición | Activación |
+|---|---|
+| Windows 10 Home | Licencia digital, OEM o comercial |
+| Windows 10 Home N | Licencia digital, OEM o comercial |
+| Windows 10 Home Single Language | Licencia digital, OEM o comercial |
+| Windows 10 Home China | Licenciamiento específico |
+
+Otras variantes, como Windows 10 Team y Windows 10 IoT Core, tienen mecanismos de licenciamiento particulares.
+
+## 9. Activación mediante KMS autorizado
+
+### Paso 1. Abrir CMD como administrador
+
+### Paso 2. Instalar la clave de la edición correspondiente
+
+```cmd
+slmgr /ipk XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+```
+
+### Paso 3. Configurar el servidor KMS de la organización
+
+```cmd
+slmgr /skms SERVIDOR_KMS_AUTORIZADO:1688
+```
+
+### Paso 4. Solicitar activación
+
+```cmd
+slmgr /ato
+```
+
+### Paso 5. Verificar el estado
+
+```cmd
+slmgr /dlv
+slmgr /xpr
+```
+
+> Las activaciones KMS normalmente tienen una duración de 180 días y se renuevan periódicamente al comunicarse con el servidor autorizado.
+
+## 10. Ejemplo: Windows 10 Enterprise LTSC 2021
+
+Sistema de referencia:
+
+- Windows 10 Enterprise LTSC 2021
+- Versión 21H2
+- Compilación base 19044
+
+Instalar clave:
+
+```cmd
+slmgr /ipk M7XTQ-FN8P6-TTKYV-9D4CC-J462D
+```
+
+Configurar servidor KMS autorizado:
+
+```cmd
+slmgr /skms SERVIDOR_KMS_AUTORIZADO:1688
+```
+
+Activar:
+
+```cmd
+slmgr /ato
+```
+
+Comprobar:
+
+```cmd
+slmgr /xpr
+```
+
+## 11. Activación mediante clave MAK
+
+Si la organización dispone de una clave MAK legítima, puede realizar la activación sin configurar un servidor KMS local.
+
+```cmd
+slmgr /ipk XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+slmgr /ato
+slmgr /xpr
+```
+
+## 12. Comandos adicionales de administración
+
+| Comando | Descripción |
+|---|---|
+| slmgr /dli | Información básica de licencia |
+| slmgr /dlv | Información detallada |
+| slmgr /xpr | Fecha de expiración o activación permanente |
+| slmgr /ato | Solicitar activación |
+| slmgr /ipk CLAVE | Instalar clave de producto |
+| slmgr /skms SERVIDOR:1688 | Configurar servidor KMS |
+| slmgr /ckms | Eliminar servidor KMS configurado manualmente |
+| slmgr /upk | Desinstalar clave instalada |
+| slmgr /cpky | Eliminar clave del registro |
+
+## 13. Diagnóstico de errores
+
+| Código | Causa habitual |
+|---|---|
+| 0xC004F074 | No se puede contactar con el servidor KMS |
+| 0xC004F050 | Clave no válida para la edición |
+| 0xC004C003 | Clave bloqueada o rechazada |
+| 0x80070005 | Permisos insuficientes |
+
+### Comprobar conexión con KMS
+
+Desde PowerShell:
+
+```powershell
+Test-NetConnection SERVIDOR_KMS_AUTORIZADO -Port 1688
+```
+
+### Consultar el estado de licencia
+
+```cmd
+slmgr /dlv
+```
+
+## 14. Versiones de Windows 10
+
+| Versión | Compilación base |
+|---|---|
+| 1507 | 10240 |
+| 1511 | 10586 |
+| 1607 | 14393 |
+| 1703 | 15063 |
+| 1709 | 16299 |
+| 1803 | 17134 |
+| 1809 | 17763 |
+| 1903 | 18362 |
+| 1909 | 18363 |
+| 2004 | 19041 |
+| 20H2 | 19042 |
+| 21H1 | 19043 |
+| 21H2 | 19044 |
+| 22H2 | 19045 |
+
+> La versión o compilación no determina por sí sola la clave KMS. Debe comprobarse también la edición de Windows.
+
+## 15. Referencias
+
+- [Claves KMS oficiales de Microsoft](https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys)
+- [Planificación de activación KMS](https://learn.microsoft.com/en-us/windows-server/get-started/kms-activation-planning)
+- [Gist de referencia](https://gist.github.com/judero01col/4eac6f01f3fe64a48924b229c6427f01)
+
+---
+
+**Nota:** Este documento está destinado a la administración legítima de licencias Windows. Las claves genéricas no sustituyen la adquisición de licencias ni autorizan el uso de servidores KMS públicos de terceros.
+
+
+
+## Servidores KMS públicos de referencia
+
+> **Advertencia:** Hosts de terceros no verificados. No sustituyen un servidor KMS autorizado ni una licencia válida de Windows.
+
+| N.º | Host | Puerto indicado o predeterminado |
+|---|---|---|
+| 1 | `kms8.msguides.com` | 1688 (predeterminado) |
+| 2 | `kms.digiboy.ir` | 1688 (predeterminado) |
+| 3 | `kms.ddns.net` | 1688 (predeterminado) |
+| 4 | `kms.shuax.com` | 1688 (predeterminado) |
+| 5 | `kensol263.imwork.net` | 1688 (explícito) |
+| 6 | `kms789.com` | 1688 (predeterminado) |
+| 7 | `dimanyakms.sytes.net` | 1688 (explícito) |
+| 8 | `kms.03k.org` | 1688 (explícito) |
+| 9 | `54.223.212.31` | 1688 (predeterminado) |
+| 10 | `kms.cnlic.com` | 1688 (predeterminado) |
+| 11 | `hq1.chinancce.com` | 1688 (predeterminado) |
+| 12 | `kms.chinancce.com` | 1688 (predeterminado) |
+| 13 | `franklv.ddns.net` | 1688 (predeterminado) |
+| 14 | `k.zpale.com` | 1688 (predeterminado) |
+| 15 | `m.zpale.com` | 1688 (predeterminado) |
+| 16 | `mvg.zpale.com` | 1688 (predeterminado) |
+| 17 | `xykz.f3322.org` | 1688 (predeterminado) |
+
+### Configuración con un servidor autorizado
+
+```cmd
+slmgr /ipk XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+slmgr /skms SERVIDOR_AUTORIZADO:1688
+slmgr /ato
+slmgr /dlv
+slmgr /xpr
+```
+
+### Detección automática del KMS institucional
+
+```cmd
+slmgr /ckms
+slmgr /ato
+slmgr /xpr
+```
+
+### Verificación de conectividad
+
+```powershell
+Test-NetConnection SERVIDOR_AUTORIZADO -Port 1688
+```
+
+### Aclaración sobre DISM
+
+El comando siguiente corresponde a Windows Server Standard, no a Windows 10:
+
+```cmd
+DISM /online /Set-Edition:ServerStandard /ProductKey:N69G4-B89J2-4G8F4-WWYCC-J464C /AcceptEula
+```
+
+No debe ejecutarse para activar Windows 10.
+  
+
